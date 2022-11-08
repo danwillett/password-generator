@@ -7,7 +7,8 @@ This project is a web application that randomly generates passwords based on use
 
 ## Installation
 
-This is a web-based application, so all you need is a working we browser. Navigate to this link: _________
+This is a web-based application, so all you need is a working we browser. Navigate to this link: https://danwillett.github.io/password-generator/
+
 
 ## Usage
 
