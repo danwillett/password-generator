@@ -30,6 +30,8 @@ function filterChars(specs, pool) {
   return pool
 }
 
+// randomly selects a character from the password character pool. If 
+// the remove option is selected, that character is removed from the pool
 function generateChar(pool, remove) {
   var poolSize = pool.length;
   var ind = Math.floor(Math.random() * poolSize);
@@ -46,7 +48,8 @@ function generateChar(pool, remove) {
   }
 }
 
-// remove keys that are false
+// remove password character types from the password character
+// pool that are not wanted by user
 function makePasswordPool(passCharSpecs, charPool) {
   var ent = Object.entries(passCharSpecs)
   var filt = ent.filter(([key, value]) => value == false)
@@ -61,6 +64,9 @@ function makePasswordPool(passCharSpecs, charPool) {
   return passPool
 }
 
+// randomly selects characters from the password pool. The first selections
+// come from each character pool type to ensure at least one password character
+// is chosen from each pool
 function getPassword(passPool, length) {
   var keys = Object.keys(passPool);
   var i = 0;
@@ -105,6 +111,8 @@ function getPassword(passPool, length) {
   return myPass
 }
 
+// writes password to the #password html element and displays 
+// on webpage
 function writePassword(passPool, length) {
   var password = getPassword(passPool, length);
   var passwordText = document.querySelector("#password");
@@ -113,6 +121,7 @@ function writePassword(passPool, length) {
   return password
 }
 
+// defines the whole process of generating password after button is clicked
 function generatePassword() {
   // ensures password length is good before moving on
   do {
@@ -161,20 +170,3 @@ function generatePassword() {
   var yourPassword = writePassword(passwordPool, responseLength);
   console.log("This is your password: " + yourPassword)
 }
-
-
-
-// Get references to the #generate element
-// var generateBtn = document.querySelector("#generate");
-// console.log(generateBtn)
-
-// selecting password specs
-// inputs: password length (at least 8), lowercase, uppercase, numeric, special characters
-
-
-
-
-
-
-// // Add event listener to generate button
-// generateBtn.addEventListener("click", writePassword);
